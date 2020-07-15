@@ -1,3 +1,4 @@
+//initiialized all the modules
 const inquirer = require("inquirer");
 const fs = require("fs");
 const style = require("./templates/css")
@@ -9,9 +10,10 @@ const Manager = require("./lib/manager")
 const Intern = require("./lib/intern");
 const { dirname } = require("path");
 
+// initialising an array to null
 let finalTeamArray = [];
 
-
+// assigning a function called startingPrompt
 function startingPrompt() {
     inquirer.prompt([
         {
@@ -28,6 +30,7 @@ function startingPrompt() {
     
 }
 
+// initialising a function called called addManager for add mangers details
 function addManager() {
     inquirer.prompt([
         {
@@ -57,6 +60,8 @@ function addManager() {
         });
 
 }
+
+// initialising function to add members
 
 function addTeamMembers() {
     inquirer.prompt([
@@ -144,6 +149,7 @@ function addIntern() {
 function compileTeam() {
     console.log(" YOU MADE A GREAT TEAM WELL DONE !!!!")
 
+    // assigning html to a constant called htmlBegining
     const htmlArray = []
     const htmlBeginning = `
     <!DOCTYPE html>
@@ -205,7 +211,13 @@ function compileTeam() {
     </html>
     `
     htmlArray.push(htmlEnd);
+<<<<<<< HEAD
     console.log(finalTeamArray);
+=======
+    //console.log(htmlBeginning);
+    
+    //creating an html file by using fs property called writefile
+>>>>>>> 937f4deedf13408c7f0a64491bf2669d4077b366
 
     fs.writeFile(__dirname+`/${finalTeamArray[0]}.html`, htmlArray.join(""), function (err) {
         if (err) throw err;
