@@ -6,7 +6,8 @@ const path = require("path");
 const Employee = require("./lib/employee")
 const Engineer = require("./lib/engineer")
 const Manager = require("./lib/manager")
-const Intern = require("./lib/intern")
+const Intern = require("./lib/intern");
+const { dirname } = require("path");
 
 let finalTeamArray = [];
 
@@ -204,9 +205,11 @@ function compileTeam() {
     </html>
     `
     htmlArray.push(htmlEnd);
-    //console.log(htmlBeginning);
+    console.log(finalTeamArray);
 
-    fs.writeFile(`./generated-html/${finalTeamArray[0]}.html`, htmlArray.join(""), function (err) {
+    fs.writeFile(__dirname+`/${finalTeamArray[0]}.html`, htmlArray.join(""), function (err) {
+        if (err) throw err;
+        console.log('The file has been saved!');
         
     })
 }
